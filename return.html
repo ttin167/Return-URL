@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VNPay - Chuyển về app</title>
+  <style>
+    body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; }
+    .msg { color: #333; margin: 1rem 0; }
+    .loading { color: #666; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <p class="msg">Đang chuyển về app...</p>
+  <p class="loading" id="status">Vui lòng chờ.</p>
+  <script>
+    (function() {
+      var q = window.location.search;
+      if (q && q.indexOf('vnp_') !== -1) {
+        document.getElementById('status').textContent = 'Mở ứng dụng Lab15...';
+        window.location.replace('lab15://vnpay/return' + q);
+      } else {
+        document.getElementById('status').textContent = 'Không có dữ liệu từ VNPay. Đóng trang này và thử lại từ app.';
+      }
+    })();
+  </script>
+</body>
+</html>
